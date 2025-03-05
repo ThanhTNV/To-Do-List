@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { TodoItem } from '../../components/TodoItem/TodoItem';
+import { TodoItem } from './TodoItem';
 
 describe('TodoItem Component', () => {
   // Mock functions for callbacks
