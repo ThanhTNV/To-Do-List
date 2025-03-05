@@ -24,9 +24,10 @@ jobs:
         version: 9
     - uses: actions/setup-node@v4
       with:
+        cache-dependency-path: todo-list-fe/pnpm-lock.yaml
         node-version: 20
         cache: 'pnpm'
         
     - run: pnpm i
-    - run: pnpm build --if-present
+    - run: pnpm build
     - run: pnpm test
