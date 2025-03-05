@@ -10,5 +10,8 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: '/test/setup.ts',
     deps: {},
+    coverage: {
+      provider: 'istanbul', // or 'v8'
+    },
   },
 });
