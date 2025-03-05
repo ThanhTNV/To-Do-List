@@ -1,7 +1,7 @@
-import { describe, it, expect, beforeEach } from 'vitest';
-import { render, screen, within, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import TodoList from '../../components/todo-list/todo-list';
+import { beforeEach, describe, expect, it } from 'vitest';
+import TodoList from '../../components/TodoList/TodoList';
 
 // Test data
 const ACTIVE_TODO = {
@@ -102,9 +102,7 @@ describe('TodoList Component', () => {
       setupTodos([ACTIVE_TODO]);
       render(<TodoList />);
 
-      const todoItem = screen
-        .getByText('Active todo')
-        .closest('div') as HTMLElement;
+      const todoItem = screen.getByText('Active todo').closest('div') as HTMLElement;
       const checkButton = within(todoItem).getAllByRole('button')[0]; // First button is checkbox
 
       await user.click(checkButton);
@@ -119,9 +117,7 @@ describe('TodoList Component', () => {
       setupTodos([ACTIVE_TODO]);
       render(<TodoList />);
 
-      const todoItem = screen
-        .getByText('Active todo')
-        .closest('div') as HTMLElement;
+      const todoItem = screen.getByText('Active todo').closest('div') as HTMLElement;
       const buttons = within(todoItem).getAllByRole('button');
       const deleteButton = buttons[buttons.length - 1]; // Last button is delete
 
@@ -138,9 +134,7 @@ describe('TodoList Component', () => {
       setupTodos([ACTIVE_TODO]);
       render(<TodoList />);
 
-      const todoItem = screen
-        .getByText('Active todo')
-        .closest('div') as HTMLElement;
+      const todoItem = screen.getByText('Active todo').closest('div') as HTMLElement;
       const buttons = within(todoItem).getAllByRole('button');
       const editButton = buttons[buttons.length - 2]; // Second to last is edit
 
