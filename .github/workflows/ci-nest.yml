@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: /todo-list-be
+        working-directory: ./todo-list-be
 
     steps:
     - uses: actions/checkout@v4

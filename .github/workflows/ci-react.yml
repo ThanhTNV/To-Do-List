@@ -15,7 +15,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: /todo-list-fe
+        working-directory: ./todo-list-fe
 
     steps:
     - uses: actions/checkout@v4
