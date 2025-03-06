@@ -2,6 +2,9 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { TodoService } from './todo.service';
 import { CreateTodoDto } from './dto/create-todo.dto';
 import { UpdateTodoDto } from './dto/update-todo.dto';
+import { Todos } from '../data';
+
+const MockTodos = Todos;
 
 describe('TodoService', () => {
   let service: TodoService;
@@ -19,58 +22,77 @@ describe('TodoService', () => {
   });
 
   describe('create', () => {
-    it('should return a string message', () => {
+    it('should create a new todo and return it', async () => {
       // Arrange
       const createTodoDto: CreateTodoDto = {
-        title: 'Test todo',
-        description: 'Test description',
+        title: 'New todo',
+        description: 'This is a new todo',
         completed: false,
       };
 
       // Act
-      const result = service.create(createTodoDto);
+      const result = await service.create(createTodoDto);
 
       // Assert
-      expect(result).toEqual('This action adds a new todo');
+      expect(result).toEqual({
+        id: expect.any(Number),
+        ...createTodoDto,
+      });
     });
   });
 
   describe('findAll', () => {
-    it('should return a string message', () => {
+    it('should return an array of todos', async () => {
       // Act
-      const result = service.findAll();
+      const result = await service.findAll();
 
       // Assert
-      expect(result).toEqual('This action returns all todo');
+      expect(result).toBeInstanceOf(Array);
+      expect(result.length).toBeGreaterThanOrEqual(MockTodos.length);
+      expect(result[0]).toEqual(
+        expect.objectContaining({
+          id: expect.any(Number),
+          title: expect.any(String),
+          description: expect.any(String),
+          completed: expect.any(Boolean),
+        }),
+      );
     });
   });
 
   describe('findOne', () => {
-    it('should return a string message with the provided id', () => {
+    it('should return a todo when id exists', async () => {
       // Arrange
       const id = 1;
 
       // Act
-      const result = service.findOne(id);
+      const result = await service.findOne(id);
 
       // Assert
-      expect(result).toEqual(`This action returns a #${id} todo`);
+      expect(result).toEqual(
+        expect.objectContaining({
+          id,
+          title: expect.any(String),
+          description: expect.any(String),
+          completed: expect.any(Boolean),
+        }),
+      );
     });
 
-    it('should handle different id values', () => {
+    it('should return undefined when id does not exist', async () => {
       // Arrange
-      const id = 42;
+      const id = 999;
 
       // Act
-      const result = service.findOne(id);
+      const result = await service.findOne(id);
 
       // Assert
-      expect(result).toEqual(`This action returns a #${id} todo`);
+      expect(result).toBeUndefined();
     });
   });
 
   describe('update', () => {
-    it('should return a string message with the provided id', () => {
+    it('should update a todo and return it when id exists', async () => {
       // Arrange
       const id = 1;
       const updateTodoDto: UpdateTodoDto = {
@@ -79,48 +101,59 @@ describe('TodoService', () => {
       };
 
       // Act
-      const result = service.update(id, updateTodoDto);
+      const result = await service.update(id, updateTodoDto);
 
       // Assert
-      expect(result).toEqual(`This action updates a #${id} todo`);
+      expect(result).toEqual(
+        expect.objectContaining({
+          id,
+          title: updateTodoDto.title,
+          completed: updateTodoDto.completed,
+        }),
+      );
     });
 
-    it('should handle different id values', () => {
+    it('should return undefined when id does not exist', async () => {
       // Arrange
-      const id = 99;
+      const id = 999;
       const updateTodoDto: UpdateTodoDto = {
-        title: 'Another updated todo',
+        title: 'Updated todo',
       };
 
       // Act
-      const result = service.update(id, updateTodoDto);
+      const result = await service.update(id, updateTodoDto);
 
       // Assert
-      expect(result).toEqual(`This action updates a #${id} todo`);
+      expect(result).toBeUndefined();
     });
   });
 
   describe('remove', () => {
-    it('should return a string message with the provided id', () => {
+    it('should remove a todo and return it when id exists', async () => {
       // Arrange
-      const id = 1;
+      const id = 2;
+      const todoBeforeRemoval = MockTodos.find((todo) => todo.id === id);
 
       // Act
-      const result = service.remove(id);
+      const result = await service.remove(id);
 
       // Assert
-      expect(result).toEqual(`This action removes a #${id} todo`);
+      expect(result).toEqual(todoBeforeRemoval);
+
+      // Verify todo is removed
+      const todoAfterRemoval = await service.findOne(id);
+      expect(todoAfterRemoval).toBeUndefined();
     });
 
-    it('should handle different id values', () => {
+    it('should return undefined when id does not exist', async () => {
       // Arrange
-      const id = 123;
+      const id = 999;
 
       // Act
-      const result = service.remove(id);
+      const result = await service.remove(id);
 
       // Assert
-      expect(result).toEqual(`This action removes a #${id} todo`);
+      expect(result).toBeUndefined();
     });
   });
 });

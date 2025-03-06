@@ -6,8 +6,12 @@ name: ReactJS CI
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - 'todo-list-fe/**'
   pull_request:
     branches: [ "main" ]
+    paths:
+      - 'todo-list-fe/**'
 
 jobs:
   build:

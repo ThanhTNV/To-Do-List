@@ -33,8 +33,7 @@ describe('TodoController (e2e)', () => {
       return request(app.getHttpServer())
         .post('/todo')
         .send(createTodoDto)
-        .expect(201) // NestJS returns 201 for POST by default
-        .expect('This action adds a new todo');
+        .expect(201); // NestJS returns 201 for POST by default
     });
 
     // Test for getting all todos
