@@ -103,6 +103,7 @@ The frontend will be available at http://localhost:5173
 |POST|/todo|Create a new todo|
 |PATCH|/todo/:id|Update a todo|
 |DELETE|/todo/:id|Delete a todo|
+|POST|/todo/:id|Mark todo as completed|
 
 ### Example API Request
 ```bash
