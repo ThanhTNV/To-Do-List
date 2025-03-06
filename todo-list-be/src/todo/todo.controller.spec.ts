@@ -314,7 +314,9 @@ describe('TodoController', () => {
     it('Should be marked as completed', async () => {
       const id = '1';
 
-      expect(await controller.complete(id)).toBeDefined();
+      const completed = await controller.complete(id);
+
+      expect(completed.completed).toBe(true);
     });
 
     it('should throw BadRequestException when id is not a number', async () => {
