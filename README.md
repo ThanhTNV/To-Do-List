@@ -2,7 +2,8 @@
 ![ci-nest](https://github.com/ThanhTNV/To-Do-List/actions/workflows/ci-nest.yml/badge.svg)
 
 # Link Video Demo: 
-https://drive.google.com/drive/folders/164IeEIHmIv23n52pWQ0XUWuTqvxqOBq1?usp=sharing
+- ![summary](https://drive.google.com/file/d/1dO12Bavs_SHzHZmZ3YP0bKL32Ckh-jKe/view?usp=sharing)
+- ![detail](https://drive.google.com/drive/folders/164IeEIHmIv23n52pWQ0XUWuTqvxqOBq1?usp=sharing)
 
 # Todo List MERN Application
 
