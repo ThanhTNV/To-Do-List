@@ -184,3 +184,11 @@ docker run -p 3000:3000 todo-list-app-fe
 - Jest for testing
 ## License
 This project is MIT licensed.
+
+## Contributors
+|**Name**|**Role**|
+|---|---|
+|Nguyễn Nam Hoàng|Project Leader|
+|Trần Nguyễn Việt Thành|Front-End|
+|Lại Thanh Hưng|Back-End|
+|Cao Hồng Mỹ Duyên|Front-End|
