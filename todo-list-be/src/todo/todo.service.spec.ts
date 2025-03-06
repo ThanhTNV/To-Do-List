@@ -159,7 +159,7 @@ describe('TodoService', () => {
 
   describe('checkCompleted', () => {
     it('should mark a todo as completed when id exists', async () => {
-      // Arrange
+    // Arrange
       const id = 1;
 
       // Act

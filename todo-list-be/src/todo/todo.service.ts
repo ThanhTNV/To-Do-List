@@ -51,6 +51,6 @@ export class TodoService {
     if (todo) {
       todo.completed = true;
     }
-    return new Promise((resolve) => resolve(todo));
+    return new Promise((resolve) => resolve(todo));    
   }
 }

@@ -6,5 +6,9 @@ export function meta({}: MetaArgs) {
 }
 
 export default function Todo() {
-  return <TodoList />;
+  return (
+    <div className="flex h-screen w-full items-center justify-center bg-gradient-to-b from-pink-100 to-indigo-200">
+      <TodoList />
+    </div>
+  );
 }
