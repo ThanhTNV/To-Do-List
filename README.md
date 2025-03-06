@@ -186,9 +186,9 @@ docker run -p 3000:3000 todo-list-app-fe
 This project is MIT licensed.
 
 ## Contributors
-|**Name**|**Role**|
-|---|---|
-|Nguyễn Nam Hoàng|Project Leader|
-|Trần Nguyễn Việt Thành|Front-End|
-|Lại Thanh Hưng|Back-End|
-|Cao Hồng Mỹ Duyên|Front-End|
+|**Name**|**Role**|**ID**|
+|---|---|---|
+|Nguyễn Nam Hoàng|Project Leader|SE183190|
+|Trần Nguyễn Việt Thành|Front-End|SE183965|
+|Lại Thanh Hưng|Back-End|SE184143|
+|Cao Hồng Mỹ Duyên|Front-End|SE184560|
