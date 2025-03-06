@@ -45,4 +45,12 @@ export class TodoService {
     }
     return new Promise((resolve) => resolve(deleted_todo));
   }
+
+  checkCompleted(id: number): Promise<Todo | undefined> {
+    const todo = this.todos.find((todo) => todo.id === id);
+    if (todo) {
+      todo.completed = true;
+    }
+    return new Promise((resolve) => resolve(todo));
+  }
 }

@@ -27,12 +27,12 @@ export class TodoController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  async findOne(@Param('id') id: string) {
     if (isNaN(+id)) {
       throw new BadRequestException('Invalid ID');
     }
 
-    const todo = this.todoService.findOne(+id);
+    const todo = await this.todoService.findOne(+id);
 
     if (!todo) {
       throw new BadRequestException('Todo not found');
@@ -42,12 +42,12 @@ export class TodoController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTodoDto: UpdateTodoDto) {
+  async update(@Param('id') id: string, @Body() updateTodoDto: UpdateTodoDto) {
     if (isNaN(+id)) {
       throw new BadRequestException('Invalid ID');
     }
 
-    const updatedTodo = this.todoService.update(+id, updateTodoDto);
+    const updatedTodo = await this.todoService.update(+id, updateTodoDto);
 
     if (!updatedTodo) {
       throw new BadRequestException('Todo not found');
@@ -57,17 +57,32 @@ export class TodoController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  async remove(@Param('id') id: string) {
     if (isNaN(+id)) {
       throw new BadRequestException('Invalid ID');
     }
 
-    const removedTodo = this.todoService.remove(+id);
+    const removedTodo = await this.todoService.remove(+id);
 
     if (!removedTodo) {
       throw new BadRequestException('Todo not found');
     }
 
     return removedTodo;
+  }
+
+  @Post(':id')
+  async complete(@Param('id') id: string) {
+    if (isNaN(+id)) {
+      throw new BadRequestException('Invalid ID');
+    }
+
+    const completedTodo = await this.todoService.checkCompleted(+id);
+
+    if (!completedTodo) {
+      throw new BadRequestException('Todo not found');
+    }
+
+    return completedTodo;
   }
 }

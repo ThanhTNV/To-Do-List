@@ -156,4 +156,33 @@ describe('TodoService', () => {
       expect(result).toBeUndefined();
     });
   });
+
+  describe('checkCompleted', () => {
+    it('should mark a todo as completed when id exists', async () => {
+      // Arrange
+      const id = 1;
+
+      // Act
+      const result = await service.checkCompleted(id);
+
+      // Assert
+      expect(result).toEqual(
+        expect.objectContaining({
+          id,
+          completed: true,
+        }),
+      );
+    });
+
+    it('should return undefined when id does not exist', async () => {
+      // Arrange
+      const id = 999;
+
+      // Act
+      const result = await service.checkCompleted(id);
+
+      // Assert
+      expect(result).toBeUndefined();
+    });
+  });
 });

@@ -309,4 +309,36 @@ describe('TodoController', () => {
       }
     });
   });
+
+  describe('complete', () => {
+    it('Should be marked as completed', async () => {
+      const id = '1';
+
+      expect(await controller.complete(id)).toBeDefined();
+    });
+
+    it('should throw BadRequestException when id is not a number', async () => {
+      // Arrange
+      const id = 'abc';
+
+      // Act & Assert
+      try {
+        await controller.complete(id);
+      } catch (error) {
+        expect(error.message).toMatch('Invalid ID');
+      }
+    });
+
+    it('should throw BadRequestException when todo is not found', async () => {
+      // Arrange
+      const id = '999';
+
+      // Act & Assert
+      try {
+        await controller.complete(id);
+      } catch (error) {
+        expect(error.message).toMatch('Todo not found');
+      }
+    });
+  });
 });
