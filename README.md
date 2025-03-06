@@ -55,6 +55,11 @@ git clone https://github.com/ThanhTNV/To-Do-List
 cd todo-list-mern
 ```
 
+1.5 Install **pnpm** from **npm**
+```bash
+npm i pnpm -g
+```
+
 2. Install backend dependencies
 
 ```bash
