@@ -60,7 +60,7 @@ describe('TodoItem Component', () => {
     const user = userEvent.setup();
     render(<TodoItem todo={todo} onToggle={mockOnToggle} onDelete={mockOnDelete} onEdit={mockOnEdit} />);
 
-    const buttons = screen.getAllByRole('button');
+    const buttons = screen.getAllByText("Delete");
     const deleteButton = buttons[buttons.length - 1]; // Last button is the delete button
 
     await user.click(deleteButton);
@@ -71,8 +71,8 @@ describe('TodoItem Component', () => {
     const user = userEvent.setup();
     render(<TodoItem todo={todo} onToggle={mockOnToggle} onDelete={mockOnDelete} onEdit={mockOnEdit} />);
 
-    const buttons = screen.getAllByRole('button');
-    const editButton = buttons[buttons.length - 2]; // Second-to-last is edit button
+    const buttons = screen.getAllByText("Edit");
+    const editButton = buttons[buttons.length - 1]; // Second-to-last is edit button
 
     await user.click(editButton);
 

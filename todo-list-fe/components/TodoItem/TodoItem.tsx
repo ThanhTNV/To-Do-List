@@ -65,12 +65,12 @@ export function TodoItem({ todo, onToggle, onDelete, onEdit }: TodoItemProps) {
 
       <div className="flex gap-1">
         {!isEditing && !todo.completed && (
-          <Button size="icon" variant="ghost" className="h-8 w-8 opacity-0 transition-opacity group-hover:opacity-100" onClick={handleEdit}>
-            <Edit2 className="h-4 w-4 text-gray-400 hover:text-blue-500" />
+          <Button size="icon" variant="ghost" className="h-8 w-8 opacity-0 transition-opacity group-hover:opacity-100 me-2" onClick={handleEdit}>
+            Edit
           </Button>
         )}
         <Button size="icon" variant="ghost" className="h-8 w-8 opacity-0 transition-opacity group-hover:opacity-100" onClick={() => onDelete(todo.id)}>
-          <Trash2 className="h-4 w-4 text-gray-400 hover:text-red-500" />
+          Delete
         </Button>
       </div>
     </motion.div>
