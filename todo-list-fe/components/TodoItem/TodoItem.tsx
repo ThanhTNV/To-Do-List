@@ -1,8 +1,7 @@
 import { Button } from 'components/ui/button';
 import { Input } from 'components/ui/input';
-import { motion } from 'framer-motion';
 import { cn } from 'lib/utils';
-import { Check, Edit2, Trash2 } from 'lucide-react';
+import { Check } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 type TodoItemProps = {
@@ -50,7 +49,7 @@ export function TodoItem({ todo, onToggle, onDelete, onEdit }: TodoItemProps) {
   };
 
   return (
-    <motion.div key={todo.id} initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.2 }} className="group flex items-center gap-3 p-4">
+    <div key={todo.id} className="group flex items-center gap-3 p-4">
       <Button size="icon" variant="outline" className={cn('h-6 w-6 rounded-full border-2 p-0', todo.completed ? 'border-transparent bg-gradient-to-r from-violet-500 to-purple-600' : 'border-gray-300 dark:border-gray-600')} onClick={() => onToggle(todo.id)} disabled={isEditing}>
         {todo.completed && <Check className="h-3 w-3 text-white" />}
       </Button>
@@ -65,7 +64,7 @@ export function TodoItem({ todo, onToggle, onDelete, onEdit }: TodoItemProps) {
 
       <div className="flex gap-1">
         {!isEditing && !todo.completed && (
-          <Button size="icon" variant="ghost" className="h-8 w-8 opacity-0 transition-opacity group-hover:opacity-100 me-2" onClick={handleEdit}>
+          <Button size="icon" variant="ghost" className="me-2 h-8 w-8 opacity-0 transition-opacity group-hover:opacity-100" onClick={handleEdit}>
             Edit
           </Button>
         )}
@@ -73,6 +72,6 @@ export function TodoItem({ todo, onToggle, onDelete, onEdit }: TodoItemProps) {
           Delete
         </Button>
       </div>
-    </motion.div>
+    </div>
   );
 }

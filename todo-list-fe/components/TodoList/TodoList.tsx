@@ -3,7 +3,7 @@
 import { Badge } from 'components/ui/badge';
 import { Button } from 'components/ui/button';
 import { Input } from 'components/ui/input';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import { cn, generateId } from 'lib/utils';
 import { Plus } from 'lucide-react';
 import { useEffect, useState } from 'react';
@@ -103,9 +103,7 @@ export default function TodoList() {
             {filteredTodos.length > 0 ? (
               filteredTodos.map((todo) => <TodoItem key={todo.id} todo={todo} onToggle={toggleTodo} onDelete={deleteTodo} onEdit={editTodo} />)
             ) : (
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-8 text-center text-gray-500 dark:text-gray-400">
-                {filter === 'all' ? 'Add your first task!' : filter === 'active' ? 'No active tasks' : 'No completed tasks'}
-              </motion.div>
+              <div className="p-8 text-center text-gray-500 dark:text-gray-400">{filter === 'all' ? 'Add your first task!' : filter === 'active' ? 'No active tasks' : 'No completed tasks'}</div>
             )}
           </AnimatePresence>
         </div>
